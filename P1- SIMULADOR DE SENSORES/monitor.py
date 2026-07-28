@@ -1,4 +1,5 @@
 from lectura import Lectura
+from datetime import datetime
 
 class Monitor:
     """
@@ -18,7 +19,7 @@ class Monitor:
     def recibir_lectura(self, sensor, valor):
         #Recibe una lectura y la guarda en un objeto para ser validada y almacenada
 
-        nueva_lectura = Lectura(sensor.sensor_id,valor,"2026-01-01")
+        nueva_lectura = Lectura(sensor.sensor_id,valor, datetime.now())
         
         #La siguiente condicion valida si falla en el tipo de valor necesario para el correcto funcionamiento de la fabrica
         if not(isinstance(valor, (int,float))):
@@ -47,3 +48,9 @@ class Monitor:
         print(f"Hubo un total de: {lecturas_invalidas}. Esto representa el {round((lecturas_invalidas/len(self.lecturas)*100))}% de todas las lecturas")
         print(f"Hay un total de {len(self.detectar_alertas())} alertas registradas.")
         print(f"El estado actual de la fabrica es: {"normal" if (lecturas_invalidas/len(self.lecturas)*100) < 50 else "en peligro"}")
+
+        with open("Reporte.txt", "w") as archivo:
+            archivo.write(f"El numero total de lecturas es de:{len(self.lecturas)} \n")
+            archivo.write(f"Hubo un total de: {lecturas_invalidas}. Esto representa el {round((lecturas_invalidas/len(self.lecturas)*100))}% de todas las lecturas\n")
+            archivo.write(f"Hay un total de {len(self.detectar_alertas())} alertas registradas.\n")
+            archivo.write(f"El estado actual de la fabrica es: {"normal" if (lecturas_invalidas/len(self.lecturas)*100) < 50 else "en peligro"}\n")
