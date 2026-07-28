@@ -1,5 +1,5 @@
 🏭 Simulador de Pipeline de Datos de Fábrica
-Factory Data Pipeline Simulator
+
  - Descripción
 
 Proyecto personal que simula un pipeline de datos industrial usando Python orientado a objetos.
@@ -8,7 +8,7 @@ El programa simula sensores de una fábrica que envían lecturas de temperatura 
 
 Construido como primer proyecto real fuera de ejercicios básicos, aplicando principios reales de Data Engineering.
 
-- Conceptos aplicados -
+- Conceptos aplicados
 Concepto	Descripción
 POO	Clases, atributos, métodos, instancias
 Validación en la ingesta	Detección de datos corruptos antes de procesarlos
@@ -18,13 +18,15 @@ Manejo de datos sucios	Lecturas inválidas se marcan y conservan, no se eliminan
 Simulación de datos	Generación aleatoria con fallos ocasionales
 Manejo de archivos	Exportación de reporte a .txt
 
-- Arquitectura del proyecto -
+- Arquitectura del proyecto
 P1- SIMULADOR DE SENSORES/
 │
 ├── sensor.py       # Clase Sensor  — modela una máquina física y genera lecturas
 ├── lectura.py      # Clase Lectura — representa un dato capturado
 ├── monitor.py      # Clase Monitor — sistema central de análisis
 └── main.py         # Orquestador  — corre el pipeline completo
+
+
 ✅ Lo que está construido
 
 V1 — Pipeline base
@@ -45,7 +47,8 @@ V2 — Simulación realista
  Timestamps reales con datetime
  Exportación de reporte a archivo Reporte.txt
 
-- Output actual - 
+
+- Output actual
 
 Consola:
 
@@ -56,8 +59,7 @@ El estado actual de la fabrica es: normal
 
 Reporte.txt — se genera automáticamente en cada corrida con el mismo contenido.
 
- - Ideas para V3 - 
+🔜 Ideas para V3
  Identificar qué sensor generó más errores
  Mostrar el timestamp de cada alerta en el reporte
  Agregar más tipos de sensores con distintos rangos
-
