@@ -16,10 +16,10 @@ class Monitor:
 
         self.sensores.append(sensor)
 
-    def recibir_lectura(self, sensor, valor):
+    def recibir_lectura(self, sensor, valor,):
         #Recibe una lectura y la guarda en un objeto para ser validada y almacenada
 
-        nueva_lectura = Lectura(sensor.sensor_id,valor, datetime.now())
+        nueva_lectura = Lectura(sensor.sensor_id,valor, datetime.now(), sensor.tipo)
         
         #La siguiente condicion valida si falla en el tipo de valor necesario para el correcto funcionamiento de la fabrica
         if not(isinstance(valor, (int,float))):
@@ -40,7 +40,7 @@ class Monitor:
                             alertas.append(lectura)
         return alertas
 
-    def generar_reporte(self):
+    def generar_reporte(self) -> None:
         #Reporte visual de los datos obtenidos hasta el momento 
 
         alertas = self.detectar_alertas()
@@ -50,9 +50,17 @@ class Monitor:
         print(f"El sensor con más errores fue el: {self.sensor_con_mas_errores()}")
         print(f"Hay un total de {len(alertas)} alertas registradas.")
 
+        alertas_por_tipo = {}
         for alerta in alertas:
-            print(f"- {alerta.sensor_id} | {alerta.timestamp} | {alerta.valor}")
+            if alerta.tipo not in alertas_por_tipo:
+                alertas_por_tipo[alerta.tipo] = [alerta]
+            else:
+                alertas_por_tipo[alerta.tipo].append(alerta)
 
+        for tipo, lista_alertas in alertas_por_tipo.items():
+            print(f"\nAlertas del tipo: {tipo}\n")
+            for alerta in lista_alertas:
+                print(f"- {alerta.sensor_id} | {alerta.timestamp} | {alerta.valor}")
 
 
         print(f"El estado actual de la fabrica es: {"normal" if (lecturas_invalidas/len(self.lecturas)*100) < 50 else "en peligro"}")
@@ -62,16 +70,19 @@ class Monitor:
             archivo.write(f"El numero total de lecturas es de:{len(self.lecturas)} \n")
             archivo.write(f"Hubo un total de: {lecturas_invalidas}. Esto representa el {round((lecturas_invalidas/len(self.lecturas)*100))}% de todas las lecturas\n")
             archivo.write(f"El sensor con más errores fue el: {self.sensor_con_mas_errores()}")
+
             archivo.write(f"Hay un total de {len(alertas)} alertas registradas.\n")
-            for alerta in alertas:
-                    archivo.write(f"- {alerta.sensor_id} | {alerta.timestamp} | {alerta.valor}")
-            archivo.write(f"El estado actual de la fabrica es: {"normal" if (lecturas_invalidas/len(self.lecturas)*100) < 50 else "en peligro"}\n")
+
+            for tipo, lista_alertas in alertas_por_tipo.items():
+                        archivo.write(f"Alertas del tipo: {tipo}\n")
+                        for alerta in lista_alertas:
+                            archivo.write(f"- {alerta.sensor_id} | {alerta.timestamp} | {alerta.valor}")
 
     def sensor_con_mas_errores(self):
         conteo = {}
 
         for lectura in self.lecturas:
-            if not(lectura.es_valida):
+            if not(lectura.es_valida): # Solo analiza lecturas inválidas (es_valida == False)
                 if lectura.sensor_id in conteo:
                     conteo[lectura.sensor_id] += 1
                 else:
@@ -80,3 +91,22 @@ class Monitor:
         sensor_mas_erratico = max(conteo, key=conteo.get)
 
         return sensor_mas_erratico
+
+    def estadisticas_por_sensor(self):
+
+        print("Estadisticas por sensor: ")
+
+        sensores = {}
+
+        for sensor in self.sensores:
+            if sensor.sensor_id not in sensores:
+                sensores[sensor.sensor_id] = []
+
+            for lectura in self.lecturas:
+                if sensor.sensor_id == lectura.sensor_id and lectura.es_valida:
+                    sensores[sensor.sensor_id].append(lectura.valor)
+
+        for id_sensor,valor in sensores.items():
+            print(f"{id_sensor} | Promedio: {round((sum(valor))/len(valor))} | Max: {max(valor)} | Min: {min(valor)} ")
+
+

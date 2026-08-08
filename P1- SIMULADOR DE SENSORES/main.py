@@ -11,7 +11,6 @@ from sensor import Sensor
 
 sistema = Monitor()
 sensor_maq_uno = Sensor("S01","temperatura", "°C", 99)
-lectura = Lectura("S01", 89, "2026-04-24")
 sensor_maq_2 = Sensor("S02", "dinero", "$", 1000)
 sensor_maq_3 = Sensor("S03", "bodycount", "personas" , 150)
 
@@ -32,3 +31,4 @@ alertas = sistema.detectar_alertas()
 print(len(alertas))
 
 sistema.generar_reporte()
+sistema.estadisticas_por_sensor()

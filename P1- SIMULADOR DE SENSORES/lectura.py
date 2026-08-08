@@ -4,7 +4,8 @@ class Lectura:
     Representa un punto de dato individual generado por un sensor.
     """
 
-    def __init__(self, sensor_id, valor, timestamp):
+    def __init__(self, sensor_id, valor, timestamp, tipo):
+        self.tipo = tipo
         self.sensor_id = sensor_id
         self.valor = valor
         self.timestamp = timestamp
