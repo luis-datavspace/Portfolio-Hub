@@ -68,7 +68,7 @@ P1- SIMULADOR DE SENSORES/
 **V4 — Análisis detallado** *(en progreso)*
 - [x] Alertas agrupadas por tipo de sensor
 - [x] Estadísticas por sensor — promedio, máximo y mínimo
-- [ ] Menú interactivo en `main.py`
+- [x] Menú interactivo en `main.py`
 - [ ] Exportar reporte a `.csv`
 
 ---
@@ -100,7 +100,6 @@ S03 | Promedio: 179 | Max: 270 | Min: 44
 
 ## Pendiente V4
 
-- [ ] Menú interactivo con `while` en `main.py`
 - [ ] Exportar reporte completo a `.csv`
 
 ---
