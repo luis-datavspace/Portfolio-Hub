@@ -3,9 +3,6 @@ from lectura import Lectura
 from sensor import Sensor
 
 # Orquestador principal del pipeline
-#I AM BACK!
-
-#TODO ESTO ES UN TIPO DEBUG, NO ES NADA FUNCIONAL PARA EL FINAL PLANEADO, SOLO DE PRUEBA
 
 # Registra sensores, genera lecturas aleatorias y corre el reporte
 
@@ -24,11 +21,36 @@ for lectura in range(10):
     for sensor in sistema.sensores:
         sistema.recibir_lectura(sensor, sensor.generar_lectura())
         
+#Se generan los datos a explorar antes del menu interactivo.
 
 
 
-alertas = sistema.detectar_alertas()
-print(len(alertas))
+# Procedo a realizar el menu interactivo para el proyecto, para mas orden y legibilidad.
 
-sistema.generar_reporte()
-sistema.estadisticas_por_sensor()
+
+while True:
+
+    print("===================================")
+    print("       SISTEMA DE MONITOREO        ")
+    print("===================================")
+    print("1. Ver reporte general")
+    print("2. Ver estadísticas por sensor")
+    print("3. Salir")
+    print("===================================")
+
+    decision = (input("¿Qué deseas hacer? ")).upper()
+
+    if decision in ("1","UNO", "VER REPORTE GENERAL"):
+        print("")
+        sistema.generar_reporte()
+        input("\nPresione Enter para continuar..... ")
+
+    elif decision in ("2","DOS","VER ESTADISTICAS POR SENSOR"):
+        print("")
+        sistema.estadisticas_por_sensor()
+        input("\nPresione Enter para continuar..... ")
+
+    elif decision in ("3","SALIR","TRES"):
+        break
+    else:
+        print("\nOpción invalida. Intentalo de nuevo.\n")
