@@ -1,5 +1,6 @@
 from lectura import Lectura
 from datetime import datetime
+import csv
 
 class Monitor:
     """
@@ -109,4 +110,40 @@ class Monitor:
         for id_sensor,valor in sensores.items():
             print(f"{id_sensor} | Promedio: {round((sum(valor))/len(valor))} | Max: {max(valor)} | Min: {min(valor)} ")
 
+    def exportar_csv(self):
+
+        with open("Reporte.csv", "w", newline="") as archvio_csv:
+            writer = csv.writer(archvio_csv)
+            writer.writerow([""])
+            writer.writerow(["LECTURAS"])
+            writer.writerow(["ID Sensor","Tipo","Valor","Fecha y Hora","Validez"])
+
+            for lectura in self.lecturas:
+                writer.writerow([lectura.sensor_id,lectura.tipo,lectura.valor,lectura.timestamp,lectura.es_valida])
+
+            writer.writerow([""])
+            writer.writerow(["ALERTAS"])
+            writer.writerow(["ID Sensor","Tipo","Valor","Fecha y Hora"])
+
+            for alerta in self.detectar_alertas():
+                writer.writerow([alerta.sensor_id,alerta.tipo,alerta.valor,alerta.timestamp])
+
+            writer.writerow([""])
+            writer.writerow(["ESTADISTICAS"])
+            writer.writerow(["ID Sensor","Promedio","Max","Min"])
+
+            sensores = {}
+
+            for sensor in self.sensores:
+                if sensor.sensor_id not in sensores:
+                    sensores[sensor.sensor_id] = []
+
+                for lectura in self.lecturas:
+                    if sensor.sensor_id == lectura.sensor_id and lectura.es_valida:
+                        sensores[sensor.sensor_id].append(lectura.valor)
+
+            for id_sensor,valor in sensores.items():
+                writer.writerow([id_sensor, round((sum(valor))/len(valor)) , max(valor) , min(valor)])
+
+            
 

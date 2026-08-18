@@ -65,11 +65,11 @@ P1- SIMULADOR DE SENSORES/
 - [x] Identificación del sensor con más errores
 - [x] Timestamp de cada alerta en el reporte
 
-**V4 — Análisis detallado** *(en progreso)*
+**V4 — Análisis detallado** 
 - [x] Alertas agrupadas por tipo de sensor
 - [x] Estadísticas por sensor — promedio, máximo y mínimo
 - [x] Menú interactivo en `main.py`
-- [ ] Exportar reporte a `.csv`
+- [x] Exportar reporte a `.csv`
 
 ---
 
@@ -98,8 +98,13 @@ S03 | Promedio: 179 | Max: 270 | Min: 44
 
 ---
 
-## Pendiente V4
+## Proximo - V5
+- [ ] Reestructuración de carpetas — models/, services/, utils/
+- [ ] Archivo de configuración centralizado
+- [ ] Logging profesional con el módulo logging
+- [ ] Persistencia de datos con SQLite
+- [ ] Dashboard visual con la librería rich
+- [ ] Pruebas unitarias con pytest
 
-- [ ] Exportar reporte completo a `.csv`
 
 ---

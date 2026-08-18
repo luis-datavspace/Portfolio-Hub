@@ -35,7 +35,8 @@ while True:
     print("===================================")
     print("1. Ver reporte general")
     print("2. Ver estadísticas por sensor")
-    print("3. Salir")
+    print("3. Exportar reporte a CSV")
+    print("4. Salir")
     print("===================================")
 
     decision = (input("¿Qué deseas hacer? ")).upper()
@@ -50,7 +51,13 @@ while True:
         sistema.estadisticas_por_sensor()
         input("\nPresione Enter para continuar..... ")
 
-    elif decision in ("3","SALIR","TRES"):
-        break
+    elif decision in ("3","EXPORTAR REPORTE A CSV","TRES"):
+                print("")
+                sistema.exportar_csv()
+                input("\nPresione Enter para continuar..... ")
+
+    elif decision in ("4","SALIR","CUATRO"):
+        print("Saliendo.......")
+        
     else:
         print("\nOpción invalida. Intentalo de nuevo.\n")
