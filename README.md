@@ -1,4 +1,4 @@
-# 📂 Portfolio-Hub: Ingeniería y Datos
+# 📂 Portfolio-Hub
 Este repositorio sirve como nodo central para mis proyectos de desarrollo, simulaciones industriales y arquitecturas de datos. Aquí organizo mis trabajos prácticos fuera de la currícula académica y cursos básicos.
 
 ---
@@ -20,11 +20,3 @@ Los proyectos contenidos aquí demuestran habilidades en:
 
 ---
 
-## 📁 Estructura del Repositorio
-```text
-Portfolio-Hub/
-├── P1- SIMULADOR DE SENSORES/   # Ingesta y monitoreo de datos industriales.
-│   ├── models/                  # Clases (Sensor, Lectura, Monitor).
-│   └── main.py                  # Orquestador del pipeline.
-├── .gitignore                   # Exclusión de basura técnica (__pycache__).
-└── README.md                    # Este índice.
