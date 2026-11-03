@@ -25,6 +25,11 @@ for lectura in range(10):
 
 
 
+sensor_maq_4 = Sensor("S04","bodycount","personas",0) #Prueba de un sensor sin datos para validar el funcionamiento en las estadisticas o el reporte CSV
+sistema.agregar_sensor(sensor_maq_4)
+
+
+
 # Procedo a realizar el menu interactivo para el proyecto, para mas orden y legibilidad.
 
 

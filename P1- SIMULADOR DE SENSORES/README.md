@@ -98,13 +98,14 @@ S03 | Promedio: 179 | Max: 270 | Min: 44
 
 ---
 
-## Proximo - V5
-- [ ] Reestructuración de carpetas — models/, services/, utils/
+## Ultima version - V5
+
+- [ ] Reestructuración en carpetas (`models/`, `services/`, `utils/`)
 - [ ] Archivo de configuración centralizado
-- [ ] Logging profesional con el módulo logging
-- [ ] Persistencia de datos con SQLite
-- [ ] Dashboard visual con la librería rich
-- [ ] Pruebas unitarias con pytest
+- [ ] Limpieza de código duplicado y mejora de la lógica del estado de la fábrica
+- [ ] Sensores con sentido industrial (temperatura, presión, vibración)
+- [ ] Pruebas unitarias con `pytest`
+- [ ] `requirements.txt` y entorno virtual (`venv`)
 
 
 ---
