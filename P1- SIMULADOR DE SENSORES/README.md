@@ -102,7 +102,7 @@ S03 | Promedio: 179 | Max: 270 | Min: 44
 
 - [ ] Reestructuración en carpetas (`models/`, `services/`, `utils/`)
 - [ ] Archivo de configuración centralizado
-- [ ] Limpieza de código duplicado y mejora de la lógica del estado de la fábrica
+- [x] Limpieza de código duplicado y mejora de la lógica del estado de la fábrica
 - [ ] Sensores con sentido industrial (temperatura, presión, vibración)
 - [ ] Pruebas unitarias con `pytest`
 - [ ] `requirements.txt` y entorno virtual (`venv`)
